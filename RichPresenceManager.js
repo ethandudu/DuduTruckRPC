@@ -90,9 +90,9 @@ class RichPresenceManager {
                             // checking if playing ATS
                             if (instance.isAts(data)) {
                                 applicationID = config.applications.ats;
-                                instance.logger.info('Game detected: ATS');
+                                instance.logger.info('Jeu détecté : ATS');
                             } else {
-                                instance.logger.info('Game detected: ETS2');
+                                instance.logger.info('Jeu détecté : ETS2');
                             }
                             instance.logger.info(`Using Discord Application ID ${applicationID}`);
 
@@ -113,7 +113,7 @@ class RichPresenceManager {
 
                             // login to RPC
                             instance.rpc.login({clientId: applicationID }).then(() => {
-                                instance.logger.info('Discord RPC ready');
+                                instance.logger.info('Discord RPC prêt');
                                 // cleaning up variables to save RPC Client state
                                 instance.rpcReady = true;
                                 instance.rpcOnChangingState = false;
@@ -125,7 +125,7 @@ class RichPresenceManager {
 
                         // checking if playing in multiplayer and loading online state, server and position
                         if (instance.checkIfMultiplayer(data) && instance.mpInfo == null && !instance.TRUCKYERROR) {
-                            instance.logger.info('Multiplayer detected');
+                            instance.logger.info('Multijoueur connecté');
                             instance.startMPChecker();
                             instance.checkMpInfo();
                         }
@@ -143,7 +143,7 @@ class RichPresenceManager {
         });
 
         this.etcars.on('connect', function (data) {
-            instance.logger.info('Connected to ETCARS');    
+            instance.logger.info('Connecté à ETCARS');    
             updateChecker.checkUpdates();
             promodsNotify.notifyUser();
         });
@@ -214,9 +214,9 @@ class RichPresenceManager {
 
             this.logger.info('Checking online status');
 
-            var url = util.format('https://api.truckyapp.com/v1/richpresence/playerInfo?query=%s', this.lastData.telemetry.user.steamID);
+            var url = util.format('https://api.truckyapp.com/v1/richpresence/playerInfo?query=%s',this.lastData.telemetry.user.steamID);
 
-            //console.log(url);
+            console.log(url);
             fetch(url, {headers: { 'User-Agent':  `VTRPC v${packageInfo.version}` }}).then((body) => {
                 return body.json()
             }).then((json) => {
@@ -339,39 +339,39 @@ class RichPresenceManager {
 
             if (typeof data.telemetry.job != 'undefined' && data.telemetry.job && data.telemetry.job.onJob === true) {
                 if (data.telemetry.job.sourceCity != null){
-                    activity.details += `🚚 ${data.telemetry.job.sourceCity} > ${data.telemetry.job.destinationCity} | ${data.telemetry.truck.make} ${data.telemetry.truck.model}`;
+                    activity.details += `🚚 ${data.telemetry.job.sourceCity} > ${data.telemetry.job.destinationCity}`; // | ${data.telemetry.truck.make} ${data.telemetry.truck.model}
                 } else {
-                    activity.details += `🚧 Special Transport | ${data.telemetry.truck.make} ${data.telemetry.truck.model}`
+                    activity.details += `🚧 Convoi exceptionnel | ${data.telemetry.truck.make} ${data.telemetry.truck.model}`
                 }
             } else {
                 if (this.gameLoading) {
-                    activity.details += `🕗 Loading game...`
+                    activity.details += `🕗 Chargement du jeu ...`
                 } else {
-                    activity.details += `🚛 Freeroaming | ${data.telemetry.truck.make} ${data.telemetry.truck.model}`;
+                    activity.details += `🚛 Jeu libre`;
                 }
             }
 
-            if (!this.gameLoading && data.telemetry.truck.engineEnabled == true) {
-                activity.details += util.format(` at ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}`);
-            }
+            /*if (!this.gameLoading && data.telemetry.truck.engineEnabled == true) {
+                activity.details += util.format(` à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}`);
+            }*/
 
-            activity.largeImageText = `VTRPC v${packageInfo.version}`;
+            activity.largeImageText = `${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))} | Vitesse : ${data.telemetry.truck.gearDisplayed} | RPM : ${data.telemetry.truck.engineRPM}`;
             activity.largeImageKey = this.getLargeImageKey(data);
 
             if (this.mpInfo != null && this.mpInfo.online != false) {
-                activity.state += util.format('🌐 %s', this.mpInfo.server.name);
-                activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
+                //activity.state += util.format('🌐 %s', this.mpInfo.server.name);
+                //activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
             } else if (data.telemetry.game.isMultiplayer == true) {
-                activity.state = `🌐 Multiplayer`;
+                activity.state = `🌐 TMP | ID : Unknown`; //${this.mpInfo.playerid}
             } else {
-                activity.state = '🌐 Singleplayer';
+                activity.state = '👨‍💼 Solo | Roule à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}';
             }
 
 
             if (this.locationInfo != null && this.locationInfo.inCity == true) {
-                this.inCityDetection = 'At';
+                this.inCityDetection = 'à';
             } else if (this.locationInfo != null && this.locationInfo.inCity == false) {
-                this.inCityDetection = 'Near';
+                this.inCityDetection = 'près de';
             } else {
                 this.inCityDetection = null;
             }
@@ -475,7 +475,7 @@ class RichPresenceManager {
             });
             this.rpcReady = false;
             this.rpcOnChangingState = false;
-            this.logger.info('Discord RPC Client destroyed');
+            this.logger.info('Discord RPC stop');
         }
     }
 }
