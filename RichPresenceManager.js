@@ -351,33 +351,33 @@ class RichPresenceManager {
                 }
             }
 
-            /*if (!this.gameLoading && data.telemetry.truck.engineEnabled == true) {
-                activity.details += util.format(` à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}`);
-            }*/
-
-            activity.largeImageText = `${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))} | Vitesse : ${data.telemetry.truck.gearDisplayed} | RPM : ${data.telemetry.truck.engineRPM}`;
-            activity.largeImageKey = this.getLargeImageKey(data);
-
-            if (this.mpInfo != null && this.mpInfo.online != false) {
-                //activity.state += util.format('🌐 %s', this.mpInfo.server.name);
-                //activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
-            } else if (data.telemetry.game.isMultiplayer == true) {
-                activity.state = `🌐 TMP | ID : Unknown`; //${this.mpInfo.playerid}
-            } else {
-                activity.state = '👨‍💼 Solo | Roule à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}';
-            }
-
 
             if (this.locationInfo != null && this.locationInfo.inCity == true) {
-                this.inCityDetection = 'à';
+                this.inCityDetection = 'A';
             } else if (this.locationInfo != null && this.locationInfo.inCity == false) {
-                this.inCityDetection = 'près de';
+                this.inCityDetection = 'Près de';
             } else {
                 this.inCityDetection = null;
             }
 
             if (this.locationInfo && this.inCityDetection && this.locationInfo.location && this.locationInfo.location != null) {
                 activity.state += util.format(' - %s %s', this.inCityDetection, this.locationInfo.location);
+            }
+
+            /*if (!this.gameLoading && data.telemetry.truck.engineEnabled == true) {
+                activity.details += util.format(` à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}`);
+            }*/
+
+            activity.largeImageText = `${this.calculateSpeed(speed, this.isAts(data))} ${this.getSpeedUnit(this.isAts(data))} | Vitesse : ${data.telemetry.truck.gearDisplayed} | RPM : ${data.telemetry.truck.engineRPM}`;
+            activity.largeImageKey = this.getLargeImageKey(data);
+
+            if (this.mpInfo != null && this.mpInfo.online != false) {
+                //activity.state += util.format('🌐 %s', this.mpInfo.server.name);
+                //activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
+            } else if (data.telemetry.game.isMultiplayer == true) {
+                activity.state = `🌐 TMP | ${this.inCityDetection} ${this.locationInfo.location}`; //${this.mpInfo.playerid}
+            } else {
+                activity.state = `👨‍💼 Solo | ${this.inCityDetection} ${this.locationInfo.location}`;
             }
 
             if (argv.logallactivity) {

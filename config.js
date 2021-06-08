@@ -4,10 +4,10 @@ const packageInfo = require('./package.json');
 
 module.exports = {
     applications: {
-        ets2: '432559364772200479',
-        ats: '454028920107565107',
+        ets2: '851934093247643708',
+        ats: '851948844555698226',
     },
-    version: `Virtual Trucker Rich Presence ${packageInfo.version}`,
+    version: `DuduTruckRPC ${packageInfo.version}`,
     kmToMilesConversion: 0.62,
     mpCheckerIntervalMilliseconds: 5 * 60 * 1000,
     locationCheckerIntervalMilliseconds: 2.5 * 60 * 1000,
@@ -37,7 +37,7 @@ module.exports = {
         'international',
         'intnational',
         'iveco',
-        'kamaz',
+        //'kamaz',
         'kenworth',
         'mack',
         'man',
@@ -45,10 +45,10 @@ module.exports = {
         'peterbilt',
         'renault',
         'scania',
-        'skoda',
-        'volvo',
-        'tesla'
+        //'skoda',
+        'volvo'//,
+        //'tesla'
     ],
-    latestReleaseAPIUrl: 'https://api.github.com/repos/VirtualTruckerRPC/Virtual-Trucker-Rich-Presence/releases/latest',
-    latestReleasePage: 'https://github.com/VirtualTruckerRPC/Virtual-Trucker-Rich-Presence/releases/latest'
+    latestReleaseAPIUrl: 'https://api.github.com/repos/ethandudu/DuduTruckRPC/releases/latest',
+    latestReleasePage: 'https://github.com/ethandudu/DuduTruckRPC/releases/latest'
 }

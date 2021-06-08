@@ -1,7 +1,7 @@
 {
-	"name": "virtual-trucker-rich-presence",
-	"version": "2.8.5",
-	"description": "An easy tool to let others see your current job, truck, etc. on Discord!",
+	"name": "DuduTruckRPC",
+	"version": "1.0.0",
+	"description": "Une Rich Presence presque parfaite pour ETS2/ATS",
 	"main": "index.js",
 	"dependencies": {
 		"1.0.1": "^1.0.0",
@@ -22,7 +22,7 @@
 	"devDependencies": {},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/VirtualTruckerRPC/Virtual-Trucker-Rich-Presence.git"
+		"url": "https://github.com/VirtualTruckerRPC/DuduTruckRPC.git"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
@@ -32,11 +32,9 @@
 		"compile": "node compile.js",
 		"release": "npm run compile && iscc .\\setup\\InnoSetupScript.iss"
 	},
-	"author": "VirtualTruckerRPC Team",
+	"author": "Ethandudu & VirtualTruckerRPC Team",
 	"contributors": [
-		"dowmeister",
-		"jammerxd",
-		"SgtBreadStick"
+		"Ethandudu"
 	],
 	"license": "MIT"
 }

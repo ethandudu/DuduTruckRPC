@@ -1,11 +1,11 @@
 #include <idp.iss>
 
-#define MyAppName "Virtual Trucker Rich Presence"
-#define MyAppVersion "2.8.5"
-#define MyAppPublisher "Virtual Trucker Rich Presence"
-#define MyAppURL "https://vtrpc.live"
-#define MyAppExeName "VirtualTruckerRichPresence.exe"
-#define MyServiceName "VirtualTruckerRichPresence"
+#define MyAppName "DuduTruckRPC"
+#define MyAppVersion "1.0.0"
+#define MyAppPublisher "DuduTruckRPC"
+#define MyAppURL "https://ethandudu.tk"
+#define MyAppExeName "DuduTruckRPC.exe"
+#define MyServiceName "DuduTruckRPC"
 #define RunHiddenVbs "RunHidden.vbs"
 #define RebootVTRPC "RebootVTRPC.bat"
 
@@ -22,7 +22,7 @@ AppMutex={#MyAppExeName}
 DefaultDirName={pf64}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=no                                                                                                           
-OutputBaseFilename=VirtualTruckerRichPresenceSetup
+OutputBaseFilename=DuduTruckRPCSetup
 SetupIconFile=..\assets\vtrpc.ico
 Compression=lzma2/ultra64
 SolidCompression=yes
@@ -58,7 +58,7 @@ Type: filesandordirs; Name: "{pf64}\{#MyAppName}"
 Type: filesandordirs; Name: "{pf}\{#MyAppName}"
 
 [Files]
-Source: "..\release\VirtualTruckerRichPresence.exe"; DestDir: "{app}"; Flags: ignoreversion;
+Source: "..\release\DuduTruckRPC.exe"; DestDir: "{app}"; Flags: ignoreversion;
 Source: "..\vbs\RunHidden.vbs"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\bat\RebootVTRPC.bat"; DestDir: "{app}"; Flags: ignoreversion;
 Source: "..\node_modules\node-notifier\vendor\snoreToast\snoretoast-x64.exe"; DestDir: "{app}\vendor\SnoreToast\"; Flags: ignoreversion;

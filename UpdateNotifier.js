@@ -28,15 +28,15 @@ class UpdateNotifier {
                 instance.logger.info('Sending notification');
 
                 notifier.notify({
-                        title: 'Virtual Trucker Rich Presence',
-                        message: `Update Available: v${response.tag_name} ⚠`,
+                        title: 'DuduTruckRPC',
+                        message: `MAJ disponible: v${response.tag_name} ⚠`,
                         icon: (__dirname, 'assets/vtrpc.ico'),
                         sound: 'Notification.Reminder',
                         wait: true,
                         open: config.latestReleasePage,
-                        appID: `VTRPC v${packageInfo.version}`, 
-                        button1: 'Update',
-                        button2: 'Ignore',
+                        appID: `DuduTruckRPC v${packageInfo.version}`, 
+                        button1: 'Mettre à jour',
+                        button2: 'Ignorer',
                         
                     },
                     function (err, response) {

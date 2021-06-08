@@ -8,10 +8,10 @@ const argv = require('yargs').argv
 const UpdateNotifier = require('./UpdateNotifier');
 const ProModsNotifier = require('./ProModsNotifier');
 
-logger.info('Rich Presence plugin starting');
+logger.info('Chargement ...');
 logger.info(`Version: ${packageInfo.version}`);
-logger.info(`Platform: ${process.platform}`);
-logger.info('Startup parameters:');
+logger.info(`Platforme: ${process.platform}`);
+logger.info('Démarrage paramètres :');
 logger.info(argv)
 
 var RichPresenceManager = require('./RichPresenceManager');
