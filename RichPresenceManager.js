@@ -375,7 +375,7 @@ class RichPresenceManager {
                 //activity.state += util.format('🌐 %s', this.mpInfo.server.name);
                 //activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
             } else if (data.telemetry.game.isMultiplayer == true) {
-                activity.state = `🌐 TMP | ${this.inCityDetection} ${this.locationInfo.location}`; //${this.mpInfo.playerid}
+                activity.state = `🌐 TMP | `; //${this.mpInfo.playerid} ${this.inCityDetection} ${this.locationInfo.location}
             } else {
                 activity.state = `👨‍💼 Solo | ${this.inCityDetection} ${this.locationInfo.location}`;
             }
