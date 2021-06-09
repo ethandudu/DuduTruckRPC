@@ -214,7 +214,7 @@ class RichPresenceManager {
 
             this.logger.info('Checking online status');
 
-            var url = util.format('https://api.truckyapp.com/v1/richpresence/playerInfo?query=%s',this.lastData.telemetry.user.steamID);
+            var url = util.format('https://api.truckyapp.com/v3/map/online?playerID=%s',this.lastData.telemetry.user.steamID);
 
             console.log(url);
             fetch(url, {headers: { 'User-Agent':  `VTRPC v${packageInfo.version}` }}).then((body) => {
