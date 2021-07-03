@@ -22,8 +22,8 @@ Supporte **Euro Truck Simulator 2**, **American Truck Simulator** et **TruckersM
 **Rich Presence en Solo**  
 ![Rich Presence en Solo](https://i.sgtbrds.tk/2ktsc.png)  
 
-**Rich Presnece en Multijoueur**  
-![Rich Presnece en Multijoueur](https://i.sgtbrds.tk/of86i.png)  
+**Rich Presence en Multijoueur**  
+![Rich Presence en Multijoueur](https://i.sgtbrds.tk/of86i.png)  
 
 ## Changelog
 ### Mise à jour 1.0.1
