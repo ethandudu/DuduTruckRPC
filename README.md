@@ -54,7 +54,7 @@ Pré-requis :
 Afin de pouvoir lancer le script sans avoir une fenêtre, ce qui est plus agréable !
 
 ## Logs
-Les logs sont ici :
+Les logs sont stockés ici :
 * Windows: `%appdata%\VirtualTruckerRichPresence\`
 * Linux: `/var/local/VirtualTruckerRichPresence/`
 * MacOS: `/home/Library/Preferences/VirtualTruckerRichPresence/`
@@ -68,13 +68,14 @@ Les logs sont ici :
 
 
 # Credits
+## Dudu Truck RPC :
 Ethandudu
 
 Merci à Yazouv pour l'aide en JS :)
 
+
 ## Projet initial :
-SgtBreadStick: Coding, Images, Guides, Website Developer.  
-jammerxd: ETCARS plugin, compatibility with ETCARS.  
-dowmeister: ETCARS plugin, coding, Trucky & Trucky API, Trucky Overlay.  
-Cody™: Bot Development.  
-Lasse: Initial project, coding.  
+SgtBreadStick: Code, images, guides.
+jammerxd: ETCARS plugin.
+dowmeister: ETCARS plugin, code, Trucky & Trucky API.
+Lasse: Projet initial, code.  
