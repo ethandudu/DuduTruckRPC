@@ -1,5 +1,5 @@
 <div>
-    (<img src="https://github.com/ethandudu/DuduTruckRPC/blob/master/assets/logo.png" width="100%" />)
+    <img src="https://github.com/ethandudu/DuduTruckRPC/blob/master/assets/logo.png" width="100%" />
 </div>
 
 # Dudu Truck RPC
