@@ -22,7 +22,9 @@ module.exports = {
         ats: 'ats',
         brandPrefix: 'brand_',
         brandGenericKey: 'brand_generic',
-        ets2LargeImagePrefix: 'ets2rpc_',
+        modelPrefix: 'model_',
+        modelGenericKey: 'model_generic',
+        ets2LargeImagePrefix: 'model_',
         atsLargeImagePrefix: 'atsrpc_',
         promodsLargeImagePrefix: 'promods_',
         largeImageKeys: {
@@ -49,6 +51,42 @@ module.exports = {
         'volvo'//,
         //'tesla'
     ],
+    supportedModels: [
+        //ETS2
+
+        //DAF
+        'xf',
+        'xf105',
+        '2021', //XG
+
+        //Iveco
+        'stralis',
+        
+        //MAN
+        'tgx',
+        'tgx_euro_6',
+
+        //Mercedes
+        'actros',
+        'new_actros',
+
+        //Scania
+        'r',
+        'r_2009',
+        's',
+        'streamline',
+
+        //Volvo
+        'fh',
+        'fh_classic',
+
+        //Renault
+        't',
+        'premium',
+        'magnum',
+
+    ],
+
     latestReleaseAPIUrl: 'https://api.github.com/repos/ethandudu/DuduTruckRPC/releases/latest',
     latestReleasePage: 'https://github.com/ethandudu/DuduTruckRPC/releases/latest'
 }

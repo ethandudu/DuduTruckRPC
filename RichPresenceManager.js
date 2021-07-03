@@ -11,8 +11,12 @@ const argv = require('yargs').argv
 const clientConfiguration = require(argv.clientConfiguration ? argv.clientConfiguration : './clientconfiguration.json');
 const UpdateNotifier = require('./UpdateNotifier');
 const ProModsNotifier = require('./ProModsNotifier');
+const { on } = require('etcars-node-client');
 var updateChecker = new UpdateNotifier();
 var promodsNotify = new ProModsNotifier();
+var CCState = "Off"
+var distanceGPS = 0
+var truckmodel = "generic"
 
 class RichPresenceManager {
     // IMPORTANT STUFF //
@@ -331,15 +335,26 @@ class RichPresenceManager {
                 } else {
                     activity.smallImageKey = config.constants.brandGenericKey;
                 }
+                truckmodel = data.telemetry.truck.model.toLowerCase();
+                truckmodel = truckmodel.replace(" ","_");
+                truckmodel = truckmodel.replace(" ","_");
+
+                if (config.supportedModels.includes(truckmodel)) {
+                activity.largeImageKey = `${config.constants.modelPrefix}${truckmodel}`;
+                } else {
+                    activity.largeImageKey = config.constants.modelGenericKey;
+                }
             }
             
             activity.details = '';
             activity.state = '';
             activity.startTimestamp = this.timestamp;
 
+            distanceGPS = data.telemetry.navigation.distance/1000
+
             if (typeof data.telemetry.job != 'undefined' && data.telemetry.job && data.telemetry.job.onJob === true) {
                 if (data.telemetry.job.sourceCity != null){
-                    activity.details += `🚚 ${data.telemetry.job.sourceCity} > ${data.telemetry.job.destinationCity}`; // | ${data.telemetry.truck.make} ${data.telemetry.truck.model}
+                    activity.details += `🚚 ${data.telemetry.job.sourceCity} > ${data.telemetry.job.destinationCity} | ${distanceGPS} ${this.getDistanceUnit(this.isAts(data))} restants`; // | ${data.telemetry.truck.make} ${data.telemetry.truck.model}
                 } else {
                     activity.details += `🚧 Convoi exceptionnel | ${data.telemetry.truck.make} ${data.telemetry.truck.model}`
                 }
@@ -347,11 +362,11 @@ class RichPresenceManager {
                 if (this.gameLoading) {
                     activity.details += `🕗 Chargement du jeu ...`
                 } else {
-                    activity.details += `🚛 Jeu libre`;
+                    activity.details += `🚛 Jeu libre `;
                 }
             }
 
-
+        try {
             if (this.locationInfo != null && this.locationInfo.inCity == true) {
                 this.inCityDetection = 'A';
             } else if (this.locationInfo != null && this.locationInfo.inCity == false) {
@@ -363,19 +378,27 @@ class RichPresenceManager {
             if (this.locationInfo && this.inCityDetection && this.locationInfo.location && this.locationInfo.location != null) {
                 activity.state += util.format(' - %s %s', this.inCityDetection, this.locationInfo.location);
             }
-
+        } catch (error) {
+            
+        }
+            
             /*if (!this.gameLoading && data.telemetry.truck.engineEnabled == true) {
                 activity.details += util.format(` à ${this.calculateSpeed(speed, this.isAts(data))}${this.getSpeedUnit(this.isAts(data))}`);
             }*/
+            if (data.telemetry.truck.cruiseControlSpeed != 0){
+                CCState = "On"
+            } else {
+                CCState = "Off"
+            }
 
-            activity.largeImageText = `${this.calculateSpeed(speed, this.isAts(data))} ${this.getSpeedUnit(this.isAts(data))} | Vitesse : ${data.telemetry.truck.gearDisplayed} | RPM : ${data.telemetry.truck.engineRPM}`;
-            activity.largeImageKey = this.getLargeImageKey(data);
+            activity.largeImageText = `${this.calculateSpeed(speed, this.isAts(data))} ${this.getSpeedUnit(this.isAts(data))} | Vitesse : ${data.telemetry.truck.gearDisplayed} | RPM : ${data.telemetry.truck.engineRPM} | CC : ${CCState}`;
+            //activity.largeImageKey = this.getLargeImageKey(data);
 
             if (this.mpInfo != null && this.mpInfo.online != false) {
                 //activity.state += util.format('🌐 %s', this.mpInfo.server.name);
                 //activity.largeImageText += util.format(' | ID: %s', this.mpInfo.playerid)
             } else if (data.telemetry.game.isMultiplayer == true) {
-                activity.state = `🌐 TMP | `; //${this.mpInfo.playerid} ${this.inCityDetection} ${this.locationInfo.location}
+                activity.state = `🌐 TMP | Made by Ethandudu`; //${this.mpInfo.playerid} ${this.inCityDetection} ${this.locationInfo.location}
             } else {
                 activity.state = `👨‍💼 Solo | ${this.inCityDetection} ${this.locationInfo.location}`;
             }
@@ -388,7 +411,7 @@ class RichPresenceManager {
         return activity;
     }
 
-    getLargeImageKey(data) {
+    /*getLargeImageKey(data) {
         var prefix = config.constants.ets2LargeImagePrefix;
         var key = '';
 
@@ -406,14 +429,14 @@ class RichPresenceManager {
         if (key == '') {
             if (this.gameLoading) {
                 key = config.constants.largeImageKeys.idle;
-            }  else {
+            }/*  else {
                 key = config.constants.largeImageKeys.active;
-            }
-        }
+            }*/
+        /*} A
 
         //console.log(key);
         return prefix + key;
-    }
+    } A*/
 
     isAts(data) {
         return data.telemetry.game.gameID == config.constants.ats;

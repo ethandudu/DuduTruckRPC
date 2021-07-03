@@ -1,97 +1,77 @@
 <div>
-    <img src="https://i.sgtbrds.tk/js3fxk.png" width="100%" />
+    (assets/logo.png)
 </div>
 
-# Virtual Trucker Rich Presence
-## Version 2.8.5
+# Dudu Truck RPC
+## Version 1.0.0
 
-# VTRPC NODEJS HAS BEEN DEPRECTATED. PLEASE USE TRUCKY OVERLAY!
-## Trucky Overlay Edition
-Want to make things even easier? Just install Trucky Overlayat https://truckyapp.com/overlay and VTRPC will be included!
 
-### Important message
-Any user found abusing Trucky API with VTRPC will be held accountable for any issues, and will most likely be banned from using Trucky API is the future.
-VTRPC is a tool for rich presence and abusing API will not be tolerated!
+### Disclaimer :
+Tout utilisateur abusant de l'API Trucky avec Dudu Truck RPC sera tenu responsable de tout problème et sera très probablement interdit d'utiliser l'API Trucky.
+Dudu Truck RPC est un outil pour connecter la Rich Presence de Discord à ETS2 et ATS, les abus d'API ne seront pas tolérés !
 
-###  
-An easy tool to let others see your current job, truck, etc. using Discord Rich Presence!  
-Here's our Discord server for support: https://discord.gg/Zt49WDH  
+ETCARS 0.15.386 minimum est requis. 
+Lien de téléchargement : https://etcars.jammerxd.com/
 
-ETCARS 0.15.386 is required for the RPC to work, older versions will not work.  
-THIS VERSION INCLUDES ETCARS 0.15.386, YOU MUST DO A FULL INSTALL FOR THIS TO WORK
+## Informations importantes :
+* TruckersMP a sa propre Rich Presence, il faut la désactiver pour pouvoir profiter de Dudu Truck RPC
+* Promods n'a pas été testé, si vous notez un problème merci de faire une issue !
 
-## Things to note!
-* TruckersMP has their own Rich Presence which needs to be disabled in MP Settings!
-* Due to a few problems with previous ETCARS, you will need to install ETCARS 0.15.386 from our installer.
-* Promods is only supported on MP or via the developer argument
-* IF YOU HAVE ETCARS INSTALLED, PLEASE REINSTALL IT WITH ONE INCLUDED WITH VTRPC!
+Supporte **Euro Truck Simulator 2**, **American Truck Simulator** et **TruckersMP**.  
 
-Supports **Euro Truck Simulator 2**, **American Truck Simulator** and **TruckersMP**.  
-**Rich presence example on Single Player**  
-![Rich presence example on Single Player](https://i.sgtbrds.tk/2ktsc.png)  
-**Rich presence example on Multiplayer**  
-![Rich presence example on Multiplayer](https://i.sgtbrds.tk/of86i.png)  
+**Rich Presence en Solo**  
+![Rich Presence en Solo](https://i.sgtbrds.tk/2ktsc.png)  
+
+**Rich Presnece en Multijoueur**  
+![Rich Presnece en Multijoueur](https://i.sgtbrds.tk/of86i.png)  
 
 ## Changelog
-### Update 2.8.5 - URGENT UPDATE
- - Added user-agent to Trucky API requests
- - Increased timer for trucky api requests
- - Updated ETCars download server for installer
- - Fixed many security vulnerabilities and updated packages
- - Now using newer NodeJS LTS version
- - Added Trucky API fallback, if API is having issues the checkers will be stopped
- - New VTRPC logging method added
- - All previous versions of VTRPC will be removed!
+### Mise à jour 1.0.0
+ - Changement de l'affichage de la Rich Presence
+ - L'image de la Rich Presence Change en fonction du camion
 
-## Use in end user environment
-* Install Virtual Trucker Rich Presence using a release installation package from [Releases Page](https://github.com/VirtualTruckerRPC/Virtual-Trucker-Rich-Presence/releases) .
+## Installation
+* Installez Dudu Truck RPC depuis la [Releases Page](https://github.com/ethandudu/DuduTruckRPC/releases) .
 
-Take a look to [User Guide](UserGuide.md) for further details.
+Pour plus d'informations, rendez vous sur le guide (UserGuide.md).
 
-## Use in development environment
-But here is the most important information:  
+## Environnement de test :
 
-REQUIRED PROGRAMS:  
+Pré-requis :  
 * ETCARS 0.15.386 - https://etcars.jammerxd.com/
 * NodeJS - https://nodejs.org/  
 * Git - https://git-scm.com
 
-1. Install and download the required programs.   
-3. Open cmd/powershell by holding shift while right clicking inside the VTRPC directory.  
-4. Install the required node modules by typing "npm i" in PS/CMD.  
-5. Start the rich presence by typing "node index.js --dev". (--dev not required but recommended)  
-6. Start ETS2/ATS.  
-7. Select that and start playing!  
+1. Installer les programmes
+3. Ouvrir un CMD/Powershell et aller dans le répertoire.  
+4. Installer les modules NodeJS avec `npm i` dans le CMD/Powershell.  
+5. Lancer la Rich Presence avec `node index.js --dev`. (--dev n'est pas obligatoire mais recommandé) (commande recommandée : `node .\index.js --logallactivity --dev --logetcarsdata`)
+6. Lancer ETS2/ATS.  
+7. Jouer ! 
 
-## Prepare for distribution
-* Run `npm run compile` .
-* Bundled exe will be written in `release` directory.
+### Pourquoi utiliser un script VB?
+Afin de pouvoir lancer le script sans avoir une fenêtre, ce qui est plus agréable !
 
-## Create installation package
-* Install InnoSetup 5.6.1 - http://files.jrsoftware.org/is/5/innosetup-5.6.1.exe (YOU WILL NEED INNOSETUP 5!)
-* Install Inno Download Plugin - https://bit.ly/2KnepSA
-* Open `setup\InnoSetup.iss` with InnoSetup and compile it
-* Run `iscc .\setup\InnoSetupScript.iss` (Add to PATH variable env `C:\Program Files (x86)\Inno Setup 5`)
-* Installation package will be written in `setup\Output\VirtualTruckerRichPresenceSetup.exe`
-
-### Why is there a VBScript in this project?
-We need `RunHidden.vbs` to run a packaged node.js app windowless in windows. So, the application is launched from that vbscript.
-
-## Logging
-Log files are written in:
+## Logs
+Les logs sont ici :
 * Windows: `%appdata%\VirtualTruckerRichPresence\`
 * Linux: `/var/local/VirtualTruckerRichPresence/`
 * MacOS: `/home/Library/Preferences/VirtualTruckerRichPresence/`
 
-## Startup parameters
-* --dev : enable verbose development logging and dev environment behaviour
-* --promods : enables promods mode, doesn't do much but change images
-* --logetcarsdata : prints in console every ETCARS data received
-* --logallactivity : prints in console every activity sent to Discord
-* --clientConfiguration : specify clientconfiguration.json path
+## Paramètres de démarrage :
+* `--dev` : activer les logs détaillés du script et le comportement de l'IDE
+* `--promods` : active le mode Promods, ne change pas grand chose à part les images (pas encore implémanté)
+* `--logetcarsdata` : renvoi toutes les données reçues de ETCARS
+* `--logallactivity` :renvoi les informations de Rich Presence envoyées à Discord
+* `--clientConfiguration` : spécifie le chemin du clientconfiguration.json
 
 
-# Credits to everyone who worked on this project
+# Credits
+Ethandudu
+
+Merci à Yazouv pour l'aide en JS :)
+
+## Projet initial :
 SgtBreadStick: Coding, Images, Guides, Website Developer.  
 jammerxd: ETCARS plugin, compatibility with ETCARS.  
 dowmeister: ETCARS plugin, coding, Trucky & Trucky API, Trucky Overlay.  
