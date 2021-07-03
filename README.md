@@ -1,9 +1,9 @@
 <div>
-    (assets/logo.png)
+    <img src="https://github.com/ethandudu/DuduTruckRPC/blob/master/assets/logo.png" width="100%" />
 </div>
 
 # Dudu Truck RPC
-## Version 1.0.0
+## Version 1.0.1
 
 
 ### Disclaimer :
@@ -26,9 +26,10 @@ Supporte **Euro Truck Simulator 2**, **American Truck Simulator** et **TruckersM
 ![Rich Presnece en Multijoueur](https://i.sgtbrds.tk/of86i.png)  
 
 ## Changelog
-### Mise à jour 1.0.0
+### Mise à jour 1.0.1
  - Changement de l'affichage de la Rich Presence
  - L'image de la Rich Presence Change en fonction du camion
+ - Ajout de la télémétrie du camion sur la grande image (Vitesse en km/h ou mph en fonction du jeu, rapport engagé, RPM, Cruise Control)
 
 ## Installation
 * Installez Dudu Truck RPC depuis la [Releases Page](https://github.com/ethandudu/DuduTruckRPC/releases) .
