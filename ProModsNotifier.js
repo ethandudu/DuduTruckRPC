@@ -17,8 +17,8 @@ class ProModsNotifier {
             this.logger.info('ProMods Mode Enabled... Sending Notification');
 
             notifier.notify({
-                title: 'Virtual Trucker Rich Presence',
-                message: `ProMods Mode Enabled ⚠`,
+                title: 'Dudu Truck RPC',
+                message: `ProMods activée !`,
                 icon: (__dirname, 'assets/vtrpc.ico'),
                 sound: true,
                 wait: true,

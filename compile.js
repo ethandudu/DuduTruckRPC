@@ -6,7 +6,7 @@ const {
 
 compile({
   input: './index.js',
-  name: './release/VirtualTruckerRichPresence',
+  name: './release/DuduTruckRPC',
   ico: './assets/vtrpc.ico',
   build: false,
 }).then(() => {

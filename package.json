@@ -1,10 +1,10 @@
 {
 	"name": "DuduTruckRPC",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Une Rich Presence presque parfaite pour ETS2/ATS",
 	"main": "index.js",
 	"dependencies": {
-		"1.0.1": "^1.0.0",
+		"1.0.1": "^1.0.1",
 		"assign-deep": "^1.0.1",
 		"date-now": "^1.0.1",
 		"dateformat": "^3.0.3",
@@ -23,7 +23,7 @@
 	"devDependencies": {},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/VirtualTruckerRPC/DuduTruckRPC.git"
+		"url": "https://github.com/ethandudu/DuduTruckRPC.git"
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
